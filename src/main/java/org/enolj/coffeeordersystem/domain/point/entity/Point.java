@@ -1,4 +1,4 @@
-package org.enolj.coffeeordersystem.domain.menu;
+package org.enolj.coffeeordersystem.domain.point.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -9,20 +9,16 @@ import org.enolj.coffeeordersystem.common.entity.BaseEntity;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "menus")
-public class Menu extends BaseEntity {
+@Table(name = "points")
+public class Point extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private Long balance;
 
     @Column(nullable = false)
-    private Long price;
-
-    @Column(nullable = false)
-    @Enumerated(value = EnumType.STRING)
-    private MenuStatus status;
+    private Long userId;
 }

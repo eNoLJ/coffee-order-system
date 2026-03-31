@@ -1,4 +1,4 @@
-package org.enolj.coffeeordersystem.domain.outbox;
+package org.enolj.coffeeordersystem.domain.outbox.entity;
 
 public enum AggregateType {
 

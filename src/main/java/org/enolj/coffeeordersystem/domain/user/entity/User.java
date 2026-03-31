@@ -1,4 +1,4 @@
-package org.enolj.coffeeordersystem.domain.user;
+package org.enolj.coffeeordersystem.domain.user.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

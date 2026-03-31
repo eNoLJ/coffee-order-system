@@ -1,4 +1,4 @@
-package org.enolj.coffeeordersystem.domain.order;
+package org.enolj.coffeeordersystem.domain.order.entity;
 
 public enum OrderStatus {
 

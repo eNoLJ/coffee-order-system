@@ -1,4 +1,4 @@
-package org.enolj.coffeeordersystem.domain.menu;
+package org.enolj.coffeeordersystem.domain.menu.entity;
 
 public enum MenuStatus {
 

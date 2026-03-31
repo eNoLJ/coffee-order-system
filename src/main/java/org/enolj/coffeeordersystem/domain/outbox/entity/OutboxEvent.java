@@ -1,4 +1,4 @@
-package org.enolj.coffeeordersystem.domain.order;
+package org.enolj.coffeeordersystem.domain.outbox.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -11,29 +11,30 @@ import java.time.LocalDateTime;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "orders")
-public class Order extends BaseEntity {
+@Table(name = "outbox_events")
+public class OutboxEvent extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String menuName;
+    @Enumerated(EnumType.STRING)
+    private AggregateType aggregateType;
 
     @Column(nullable = false)
-    private Long price;
+    private Long aggregateId;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+    private EventType eventType;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String payload;
 
     @Column(nullable = false)
-    private LocalDateTime orderedAt;
+    @Enumerated(EnumType.STRING)
+    private OutboxEventStatus status;
 
-    @Column(nullable = false)
-    private Long userId;
-
-    @Column(nullable = false)
-    private Long menuId;
+    private LocalDateTime publishedAt;
 }
