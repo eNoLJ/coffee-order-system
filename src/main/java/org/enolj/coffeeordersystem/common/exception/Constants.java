@@ -10,4 +10,10 @@ public class Constants {
 
     // region 유저 관련 메세지
     public static final String MSG_NOT_FOUND_USER = "해당 유저를 찾을 수 없습니다";
+    // endregion
+
+    // region 포인트 관련 메세지
+    public static final String MSG_NOT_FOUND_POINT = "해당 포인트를 찾을 수 없습니다";
+    public static final String MSG_INVALID_CHARGE_AMOUNT = "충전 금액은 1 이상이어야 합니다";
+    // endregion
 }

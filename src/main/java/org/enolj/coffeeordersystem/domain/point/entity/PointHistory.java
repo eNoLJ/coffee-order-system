@@ -1,14 +1,14 @@
 package org.enolj.coffeeordersystem.domain.point.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.enolj.coffeeordersystem.common.entity.BaseEntity;
 
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder(access = AccessLevel.PROTECTED)
 @Table(name = "point_histories")
 public class PointHistory extends BaseEntity {
 
@@ -34,4 +34,15 @@ public class PointHistory extends BaseEntity {
 
     @Column(nullable = false)
     private Long userId;
+
+    public static PointHistory from(PointHistoryType type, Long amount, Long balanceAfter, ReferenceType referenceType, Long referenceId, Long userId) {
+        return PointHistory.builder()
+                .type(type)
+                .amount(amount)
+                .balanceAfter(balanceAfter)
+                .referenceType(referenceType)
+                .referenceId(referenceId)
+                .userId(userId)
+                .build();
+    }
 }

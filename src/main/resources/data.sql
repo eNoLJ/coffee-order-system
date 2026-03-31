@@ -1,3 +1,30 @@
+-- =========================
+-- USERS
+-- =========================
+INSERT INTO users (created_at, updated_at, name)
+VALUES (NOW(), NOW(), '홍길동');
+
+INSERT INTO users (created_at, updated_at, name)
+VALUES (NOW(), NOW(), '김철수');
+
+INSERT INTO users (created_at, updated_at, name)
+VALUES (NOW(), NOW(), '이영희');
+
+-- =========================
+-- POINTS
+-- =========================
+INSERT INTO points (created_at, updated_at, user_id, balance)
+VALUES (NOW(), NOW(), 1, 10000);
+
+INSERT INTO points (created_at, updated_at, user_id, balance)
+VALUES (NOW(), NOW(), 2, 5000);
+
+INSERT INTO points (created_at, updated_at, user_id, balance)
+VALUES (NOW(), NOW(), 3, 0);
+
+-- =========================
+-- MENUS
+-- =========================
 INSERT INTO menus (created_at, updated_at, name, price, status)
 VALUES (NOW(), NOW(), '아메리카노', 3000, 'ON_SALE');
 

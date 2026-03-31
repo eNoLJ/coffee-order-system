@@ -9,7 +9,12 @@ import static org.enolj.coffeeordersystem.common.exception.Constants.*;
 @Getter
 public enum ErrorEnum {
     // region 회원 관련
-    ERR_NOT_FOUND_MEMBER(HttpStatus.NOT_FOUND, MSG_NOT_FOUND_USER);
+    ERR_NOT_FOUND_USER(HttpStatus.NOT_FOUND, MSG_NOT_FOUND_USER),
+    // endregion
+
+    // region 포인트 관련
+    ERR_NOT_FOUND_POINT(HttpStatus.BAD_REQUEST, MSG_NOT_FOUND_POINT),
+    ERR_INVALID_CHARGE_AMOUNT(HttpStatus.BAD_REQUEST, MSG_INVALID_CHARGE_AMOUNT);
     // endregion
 
     private final HttpStatus status;

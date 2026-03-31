@@ -21,4 +21,8 @@ public class Point extends BaseEntity {
 
     @Column(nullable = false)
     private Long userId;
+
+    public void charge(Long amount) {
+        this.balance += amount;
+    }
 }
