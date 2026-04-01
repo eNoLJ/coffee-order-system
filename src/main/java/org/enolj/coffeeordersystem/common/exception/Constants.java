@@ -16,4 +16,8 @@ public class Constants {
     public static final String MSG_NOT_FOUND_POINT = "해당 포인트를 찾을 수 없습니다";
     public static final String MSG_INVALID_CHARGE_AMOUNT = "충전 금액은 1 이상이어야 합니다";
     // endregion
+
+    // region 레디스 관련 메세지
+    public static final String MSG_LOCK_ACQUIRE_FAILED = "잠시 후 다시 시도해주세요";
+    // endregion
 }
