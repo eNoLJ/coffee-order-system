@@ -1,4 +1,4 @@
-package org.enolj.coffeeordersystem.domain.order.entity;
+package org.enolj.coffeeordersystem.domain.ordereventlog.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,12 +11,21 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder(access = AccessLevel.PROTECTED)
-@Table(name = "orders")
-public class Order extends BaseEntity {
+@Table(name = "order_event_logs")
+public class OrderEventLog extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
+    private Long orderId;
+
+    @Column(nullable = false)
+    private Long userId;
+
+    @Column(nullable = false)
+    private Long menuId;
 
     @Column(nullable = false)
     private String menuName;
@@ -25,26 +34,16 @@ public class Order extends BaseEntity {
     private Long price;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private OrderStatus status;
-
-    @Column(nullable = false)
     private LocalDateTime orderedAt;
 
-    @Column(nullable = false)
-    private Long userId;
-
-    @Column(nullable = false)
-    private Long menuId;
-
-    public static Order from(String menuName, Long price, Long userId, Long menuId) {
-        return Order.builder()
-                .menuName(menuName)
-                .price(price)
-                .status(OrderStatus.PAID)
-                .orderedAt(LocalDateTime.now())
+    public static OrderEventLog from(Long orderId, Long userId, Long menuId, String menuName, Long price, LocalDateTime orderedAt) {
+        return OrderEventLog.builder()
+                .orderId(orderId)
                 .userId(userId)
                 .menuId(menuId)
+                .menuName(menuName)
+                .price(price)
+                .orderedAt(orderedAt)
                 .build();
     }
 }

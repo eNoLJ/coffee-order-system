@@ -5,6 +5,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.enolj.coffeeordersystem.common.entity.BaseEntity;
+import org.enolj.coffeeordersystem.common.exception.ErrorEnum;
+import org.enolj.coffeeordersystem.common.exception.ServiceErrorException;
 
 @Getter
 @Entity
@@ -24,5 +26,12 @@ public class Point extends BaseEntity {
 
     public void charge(Long amount) {
         this.balance += amount;
+    }
+
+    public void use(Long amount) {
+        if (this.balance < amount) {
+            throw new ServiceErrorException(ErrorEnum.ERR_INSUFFICIENT_POINT);
+        }
+        this.balance -= amount;
     }
 }

@@ -1,9 +1,7 @@
 package org.enolj.coffeeordersystem.domain.outbox.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.enolj.coffeeordersystem.common.entity.BaseEntity;
 
 import java.time.LocalDateTime;
@@ -11,6 +9,8 @@ import java.time.LocalDateTime;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder(access = AccessLevel.PROTECTED)
 @Table(name = "outbox_events")
 public class OutboxEvent extends BaseEntity {
 
@@ -37,4 +37,23 @@ public class OutboxEvent extends BaseEntity {
     private OutboxEventStatus status;
 
     private LocalDateTime publishedAt;
+
+    public static OutboxEvent from(Long orderId, String payload) {
+        return OutboxEvent.builder()
+                .aggregateType(AggregateType.ORDER)
+                .aggregateId(orderId)
+                .eventType(EventType.ORDER_CREATED)
+                .payload(payload)
+                .status(OutboxEventStatus.INIT)
+                .build();
+    }
+
+    public void markPublished() {
+        this.status = OutboxEventStatus.PUBLISHED;
+        this.publishedAt = LocalDateTime.now();
+    }
+
+    public void markFailed() {
+        this.status = OutboxEventStatus.FAILED;
+    }
 }

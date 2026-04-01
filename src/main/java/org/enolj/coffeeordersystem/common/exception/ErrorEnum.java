@@ -17,6 +17,12 @@ public enum ErrorEnum {
     ERR_INVALID_CHARGE_AMOUNT(HttpStatus.BAD_REQUEST, MSG_INVALID_CHARGE_AMOUNT),
     // endregion
 
+    // region 주문, 결제 관련
+    ERR_NOT_FOUND_MENU(HttpStatus.NOT_FOUND, MSG_NOT_FOUND_MENU),
+    ERR_MENU_NOT_ON_SALE(HttpStatus.BAD_REQUEST, MSG_MENU_NOT_ON_SALE),
+    ERR_INSUFFICIENT_POINT(HttpStatus.BAD_REQUEST, MSG_INSUFFICIENT_POINT),
+    //endregion
+
     // region 레디스 관련
     ERR_LOCK_ACQUIRE_FAILED(HttpStatus.CONFLICT, MSG_LOCK_ACQUIRE_FAILED);
     // endregion
