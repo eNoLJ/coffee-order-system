@@ -2,6 +2,8 @@ package org.enolj.coffeeordersystem.domain.kafka.consumer;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.enolj.coffeeordersystem.domain.menu.MenuService;
+import org.enolj.coffeeordersystem.domain.menu.service.MenuRedisService;
 import org.enolj.coffeeordersystem.domain.order.dto.OrderCreatedEventPayload;
 import org.enolj.coffeeordersystem.domain.ordereventlog.entity.OrderEventLog;
 import org.enolj.coffeeordersystem.domain.ordereventlog.repository.OrderEventLogRepository;
@@ -17,6 +19,7 @@ public class OrderEventConsumer {
 
     private final ObjectMapper objectMapper;
     private final OrderEventLogRepository orderEventLogRepository;
+    private final MenuRedisService menuRedisService;
 
     @Transactional
     @KafkaListener(
@@ -43,7 +46,10 @@ public class OrderEventConsumer {
             // 3. DB 저장
             orderEventLogRepository.save(logEntity);
 
-            log.info("주문 이벤트 저장 완료 - orderId: {}", payload.getOrderId());
+            // 4. 인기 메뉴 저장
+            menuRedisService.increaseScore(payload.getMenuId(), payload.getOrderedAt().toLocalDate());
+
+            log.info("주문 이벤트 저장 및 인기메뉴 반영 완료 - orderId: {}", payload.getOrderId());
 
         } catch (Exception e) {
             log.error("Kafka 메시지 처리 실패 - message: {}", message, e);

@@ -12,4 +12,6 @@ public interface MenuRepository extends JpaRepository<Menu, String> {
     Optional<Menu> findById(Long id);
 
     List<Menu> findAllByStatusOrderByIdAsc(MenuStatus status);
+
+    List<Menu> findAllByIdIn(List<Long> ids);
 }
