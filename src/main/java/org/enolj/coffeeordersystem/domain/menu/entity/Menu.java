@@ -1,14 +1,13 @@
 package org.enolj.coffeeordersystem.domain.menu.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.enolj.coffeeordersystem.common.entity.BaseEntity;
 
 @Getter
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @Table(name = "menus")
 public class Menu extends BaseEntity {
 

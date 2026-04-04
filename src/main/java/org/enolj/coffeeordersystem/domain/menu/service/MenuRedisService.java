@@ -2,7 +2,6 @@ package org.enolj.coffeeordersystem.domain.menu.service;
 
 import lombok.RequiredArgsConstructor;
 import org.enolj.coffeeordersystem.domain.menu.dto.MenuScore;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
