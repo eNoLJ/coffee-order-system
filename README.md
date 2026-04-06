@@ -48,9 +48,10 @@
 
 <details>
 <summary>API 명세서</summary>
-공통 응답 형식
 
-````
+### 공통 응답 형식
+
+````json
 {
   "success": true,
   "code": "200",
@@ -200,7 +201,7 @@ Redis ZSet을 활용하여 실시간 집계를 수행합니다.
 }
 ````
 
-</details>>
+</details>
 
 ---
 
